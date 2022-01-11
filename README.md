@@ -1,1 +1,1 @@
-# biu-brower-ext
+# biu浏览器扩展
