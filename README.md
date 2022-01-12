@@ -1,4 +1,4 @@
-# biu浏览器扩展
+# [biu浏览器扩展](https://github.com/0xbug/biu-brower-ext)
 
 
 # 如何开发
