@@ -1,0 +1,33 @@
+{
+  "name": "biu-browser-ext",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.13.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "axios": "^0.24.0",
+    "babel-eslint": "^10.1.0",
+    "cheerio": "^1.0.0-rc.10",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-to-clipboard": "^3.3.1",
+    "dayjs": "^1.10.7",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0",
+    "imurmurhash": "^0.1.4",
+    "urijs": "^1.19.7",
+    "web-storage-cache": "^1.1.1",
+    "webpack-extension-reloader": "^1.1.4"
+  }
+}
