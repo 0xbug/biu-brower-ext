@@ -8,7 +8,7 @@
         <a-tag v-on:click="copy(faviconHash.mmh3);$message.success('复制成功')">mmh3: {{ faviconHash.mmh3 }}</a-tag>
           </a-space>
          </p>
-        <a-link v-on:click="openUrl(baseUrl+'/assets/port?page=1&limit=10&project_id&favicon='+faviconHash.mmh3)"><img
+        <a-link v-on:click="openUrl(baseUrl+'/assets/port?page=1&limit=10&project_id&keyword=favicon%3D'+faviconHash.mmh3)"><img
             src="../assets/logo.png" alt="" width="30"></a-link>
         <a-link v-on:click="openUrl('https://'+fofaWebHost+'/result?q=icon_hash%3D'+faviconHash.mmh3)"><img src="../assets/fofa.png" alt=""
                                                                                       width="40">
