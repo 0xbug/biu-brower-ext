@@ -25,7 +25,6 @@
     "dayjs": "^1.10.7",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
-    "imurmurhash": "^0.1.4",
     "urijs": "^1.19.7",
     "web-storage-cache": "^1.1.1",
     "webpack-extension-reloader": "^1.1.4"

@@ -3,8 +3,9 @@
     <a-tabs type="capsule" v-if="tab">
       <a-tab-pane key="info" title="信息">
         <Projects :target="host"></Projects>
+        <ShortCut :title="title" :target="host" :favIconUrl="favIconUrl"></ShortCut>
         <FofaHostInfo :title="title" :target="host"></FofaHostInfo>
-        <BiuAssetInfo :title="title" :target="host" :port="port" :favIconUrl="favIconUrl" :favIconHash="favIconHash"></BiuAssetInfo>
+        <BiuAssetInfo :title="title" :target="host" :port="port" :favIconUrl="favIconUrl"></BiuAssetInfo>
       </a-tab-pane>
       <a-tab-pane key="dnslog" title="DNSLog">
         <BiuDNSLog></BiuDNSLog>
@@ -21,6 +22,7 @@
 
 <script>
 import DirScan from '@/components/DirScan.vue'
+import ShortCut from '@/components/ShortCut.vue'
 import BiuDNSLog from '@/components/BiuDNSLog.vue'
 import BiuAssetInfo from '@/components/BiuAssetInfo.vue'
 import FofaHostInfo from '@/components/FofaHostInfo.vue'
@@ -28,7 +30,6 @@ import Settings from '@/components/Settings.vue'
 import Projects from '@/components/Projects.vue'
 import URI from 'urijs';
 import wsCache from "@/utils/storage";
-import {getFaviconHash} from '@/api/favicon';
 
 export default {
   name: "app",
@@ -61,10 +62,6 @@ export default {
     openUrl(url) {
       this.chrome.tabs.create({url: url});
     },
-    handleFavicon(url) {
-      this.favIconHash = getFaviconHash(url);
-      console.log(this.favIconHash);
-    },
     handleGetTab() {
       let queryOptions = {active: true, currentWindow: true};
       const currentTab = this.chrome.tabs.query(queryOptions, (tabs => {
@@ -76,7 +73,6 @@ export default {
         this.tab = tab;
         this.title = tab.title;
         this.favIconUrl = tab.favIconUrl;
-        this.handleFavicon(tab.favIconUrl)
       }));
       console.log(currentTab)
     }
@@ -88,7 +84,8 @@ export default {
     DirScan,
     FofaHostInfo,
     Projects,
-    Settings
+    Settings,
+    ShortCut,
   },
 };
 </script>

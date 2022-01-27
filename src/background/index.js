@@ -1,5 +1,6 @@
 import {getBaseUrl} from "@/utils/biu";
 import {addSnippet} from '@/api/snippet';
+import {getWebHost} from "@/utils/fofa";
 
 
 chrome.contextMenus.create({ // eslint-disable-line
@@ -40,7 +41,7 @@ chrome.contextMenus.create({ // eslint-disable-line
     title: 'Fofa搜索：%s',
     contexts: ['selection'],
     onclick: function (params) {
-        chrome.tabs.create({url: 'https://fofa.so/result?q=' + params.selectionText}); // eslint-disable-line
+        chrome.tabs.create({url: 'https://'+getWebHost()+'/result?q=' + params.selectionText}); // eslint-disable-line
     }
 });
 chrome.contextMenus.create({ // eslint-disable-line

@@ -6,17 +6,20 @@
         <a-skeleton-shape/>
       </a-space>
     </a-skeleton>
-    <a-card v-else :bordered="false" :body-style="{padding:0}">
-      <a-descriptions :data="data" title="FOFA信息" bordered/>
+    <a-card v-else :bordered="false" :body-style="{padding:0}" :header-style="{padding:0}">
+      <a-descriptions :data="data" bordered/>
+      <template #title>
+        <a-link v-on:click="openUrl('https://'+fofaWebHost+'/hosts/'+target)">FOFA信息</a-link>
+      </template>
       <a-table size="mini" :bordered="false" stripe :pagination="false" :data="ports" style="margin-top: 5px">
         <template #columns>
           <a-table-column title="端口" data-index="port" width="150"></a-table-column>
           <a-table-column title="协议" data-index="service" width="150">
             <template #cell="{ record }">
               <a-link v-on:click="openUrl(record.service.toLowerCase().split('/')[1]+'://' +target+':'+record.port)">{{
-                    record.service
-                  }}
-                </a-link>
+                  record.service
+                }}
+              </a-link>
 
             </template>
           </a-table-column>
@@ -36,6 +39,8 @@
 
 <script>
 import {getHostInfo, getHostComponentsInfo} from '@/api/fofa';
+import {getWebHost} from "@/utils/fofa";
+
 import cheerio from 'cheerio';
 
 export default {
@@ -47,6 +52,7 @@ export default {
   },
   data() {
     return {
+      fofaWebHost: getWebHost(),
       loading: false,
       portRules: null,
       ports: [],

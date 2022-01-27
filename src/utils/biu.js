@@ -1,11 +1,11 @@
-import wsCache from "@/utils/storage";
+import {getSetting, setSetting} from "@/utils/setting";
 
-export const getApiKey = () => wsCache.get("apiKey");
-export const getBaseUrl = () => wsCache.get("baseUrl");
+export const getApiKey = () => getSetting("apiKey");
+export const getBaseUrl = () => getSetting("baseUrl");
 
 export const setBaseUrl = url => {
-  wsCache.set('baseUrl', url)
+    setSetting('baseUrl', url)
 }
 export const setApiKey = ak => {
-  wsCache.set('apiKey', ak)
+    setSetting('apiKey', ak)
 }

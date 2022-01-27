@@ -1,7 +1,5 @@
-import wsCache from "@/utils/storage";
+import {getSetting} from "@/utils/setting";
 
-export const getAuthorization = () => wsCache.get("fofaAuth");
-
-export const setAuthorization = auth => {
-  wsCache.set('fofaAuth', auth);
-}
+export const getAuthorization = () => getSetting("fofaAuth");
+export const getApiHost = () => getSetting("fofaApiHost");
+export const getWebHost = () => getSetting("fofaWebHost");

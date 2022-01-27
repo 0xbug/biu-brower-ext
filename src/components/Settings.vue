@@ -6,23 +6,15 @@
     <a-form-item field="dark" label="护眼模式">
       <a-switch v-model="form.dark" type="round" @change="handleDark">
         <template #checked-icon>
-          <icon-moon-fill />
+          <icon-moon-fill/>
         </template>
         <template #unchecked-icon>
           <icon-sun-fill style="color: orange"/>
         </template>
       </a-switch>
     </a-form-item>
-    <a-form-item field="fofaAuth" label="FOFA Authorization">
-      <a-input-password placeholder="" allow-clear
-                        v-model="form.fofaAuth">
-        <template #prefix>
-          <icon-link/>
-        </template>
-      </a-input-password>
-    </a-form-item>
     <a-form-item required field="url" label="Biu服务器地址">
-      <a-input placeholder="格式 https://example.com" allow-clear
+      <a-input placeholder="格式 https://example.com 结尾不需要/" allow-clear
                v-model="form.url">
         <template #prefix>
           <icon-link/>
@@ -36,6 +28,31 @@
         </template>
       </a-input-password>
     </a-form-item>
+    <a-form-item field="fofaApiHost" label="FOFA Api Host">
+      <a-input placeholder="格式 example.com 默认 api.fofa.so" allow-clear
+               v-model="form.fofaApiHost">
+        <template #prefix>
+          <icon-link/>
+        </template>
+      </a-input>
+    </a-form-item>
+    <a-form-item field="fofaWebHost" label="FOFA Web Host">
+      <a-input placeholder="格式 example.com 默认 fofa.so" allow-clear
+               v-model="form.fofaWebHost">
+        <template #prefix>
+          <icon-link/>
+        </template>
+      </a-input>
+    </a-form-item>
+    <a-form-item field="fofaAuth" label="FOFA Authorization">
+      <a-input-password placeholder="" allow-clear
+                        v-model="form.fofaAuth">
+        <template #prefix>
+          <icon-link/>
+        </template>
+      </a-input-password>
+    </a-form-item>
+
     <a-form-item field="secondDirDict" label="二级路径探测字典">
       <a-textarea
           v-model="form.secondDirDict"
@@ -66,6 +83,8 @@ export default {
         url: '',
         ak: '',
         fofaAuth: '',
+        fofaWebHost: '',
+        fofaApiHost: '',
         secondDirDict: '',
         thirdDirDict: '',
       },
@@ -91,6 +110,8 @@ export default {
         ak: getSetting('apiKey'),
         url: getSetting('baseUrl'),
         fofaAuth: getSetting('fofaAuth'),
+        fofaWebHost: getSetting('fofaWebHost'),
+        fofaApiHost: getSetting('fofaApiHost'),
         secondDirDict: getSetting('secondDirDict'),
         thirdDirDict: getSetting('thirdDirDict'),
       };
@@ -108,6 +129,8 @@ export default {
       setSetting('apiKey', this.form.ak);
       setSetting('baseUrl', this.form.url);
       setSetting('fofaAuth', this.form.fofaAuth);
+      setSetting('fofaApiHost', this.form.fofaApiHost ? this.form.fofaApiHost : 'api.fofa.so');
+      setSetting('fofaWebHost', this.form.fofaWebHost ? this.form.fofaWebHost : 'fofa.so');
       setSetting('secondDirDict', this.form.secondDirDict);
       setSetting('thirdDirDict', this.form.thirdDirDict);
       this.$message.success("保存成功");
