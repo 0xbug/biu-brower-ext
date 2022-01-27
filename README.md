@@ -4,6 +4,11 @@
 # 如何开发
 
 前端使用了 https://arco.design/vue/docs/start
+## 安装Vue CLI
+```
+npm install -g @vue/cli
+```
+
 ## 安装依赖
 ```
 npm install
